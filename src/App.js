@@ -24,7 +24,8 @@ class App extends Component {
 
   handleCorrect = () => {
     this.setState(prevState => {
-      return {currentScore: prevState.currentScore + 1}
+      let newTop = prevState.currentScore + 1 > this.state.bestScore?prevState.currentScore + 1:this.state.bestScore; 
+      return {currentScore: prevState.currentScore + 1, bestScore: newTop }
    });
    this.handleRandom();
   }
