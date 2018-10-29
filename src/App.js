@@ -9,8 +9,37 @@ class App extends Component {
   state = {
     data,
     currentScore: 0,
-    bestScore: 0
+    bestScore: 0,
+    clicked: []
   };
+
+  handleClick = id => {
+    if (this.state.clicked.indexOf(id) === -1) {
+      this.handleCorrect()
+      this.setState({ clicked: this.state.clicked.concat(id) });
+    } else {
+      this.handleWrong();
+    }
+  };
+
+  handleCorrect = () => {
+    this.setState(prevState => {
+      return {currentScore: prevState.currentScore + 1}
+   });
+   this.handleRandom();
+  }
+
+  handleWrong = () => {
+    this.setState({
+      currentScore: 0,
+      clicked: []
+    });
+  }
+
+  handleRandom = () => {
+    const newArray = arr => arr.sort(() => Math.random() - 0.5);
+    this.setState({ friends: newArray(data) });
+  }
 
   render() {
     return (
@@ -28,6 +57,7 @@ class App extends Component {
                 key={point.id}
                 image={point.image}
                 name={point.name}
+                handleClick={this.handleClick}
               />
             ))}
           </div>
