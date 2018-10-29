@@ -1,6 +1,6 @@
-# Project Title
+# Star Wars Clicky Game
 
-One Paragraph of project description goes here
+A Star Wars memory game where you try to click on one image at a time without repeat clicks.
 
 ## Getting Started
 
